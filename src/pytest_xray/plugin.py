@@ -173,7 +173,7 @@ class XrayPlugin:
         logfile = self.config.getoption(XRAYPATH)
         self.logfile: str = self._get_normalize_logfile(logfile) if logfile else None
         self.test_keys: Dict[str, List[str]] = {}  # store nodeid and TestId
-        self.test_steps: Dict[str, int] = {} # store nodeid and test step
+        self.test_steps: Dict[str, int] = {}  # store nodeid and test step
         self.issue_id = None
         self.exception = None
         self.test_execution: TestExecution = TestExecution(
@@ -213,7 +213,7 @@ class XrayPlugin:
             if "step" in marker.kwargs:
                 if isinstance(marker.kwargs["step"], int):
                     # Steps in jira are 1-based, but the report that is sent to
-                    # Xray is 0 based. One is subtracted here to make that 
+                    # Xray is 0 based. One is subtracted here to make that
                     # conversion
                     test_step = marker.kwargs["step"] - 1
                 else:
