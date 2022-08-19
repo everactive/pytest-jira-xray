@@ -249,7 +249,6 @@ for the associated Xray test step. Additionally, the comment for each test metho
 comment in the Xray test step. The overall Xray testcase status will be marked as FAIL if any test
 steps fail.
 
-
 Hooks
 +++++
 
@@ -260,6 +259,7 @@ There is possibility to modify a XRAY report before it is send to a server by ``
     def pytest_xray_results(results, session):
         results['info']['user'] = 'pytest'
 
+=======
 
 IntelliJ integration
 ++++++++++++++++++++

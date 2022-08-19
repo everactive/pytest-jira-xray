@@ -13,6 +13,10 @@ def formatted_comment(comment: str):
     return f"{{noformat}}\n{comment}\n{{noformat}}"
 
 
+def formatted_comment(comment: str):
+    return f"{{noformat}}\n{comment}\n{{noformat}}"
+
+
 @pytest.fixture
 def date_time_now():
     return dt.datetime(2021, 4, 23, 16, 30, 2, 0, tzinfo=dt.timezone.utc)
