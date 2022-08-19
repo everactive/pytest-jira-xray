@@ -227,7 +227,6 @@ class XrayPlugin:
 
             self.test_keys[item.nodeid] = test_keys
             self.test_steps[item.nodeid] = test_step
-        
 
             if duplicated_jira_ids and not self.allow_duplicate_ids:
                 raise XrayError(f'Duplicated test case ids: {duplicated_jira_ids}')
