@@ -235,7 +235,7 @@ class XrayPlugin:
         """Return XRAY test id for nodeid."""
         return self.test_keys.get(nodeid)
 
-    def _get_test_step_for(self, nodeid: str) -> Optional[int]:
+    def _get_test_step_for_nodeid(self, nodeid: str) -> Optional[int]:
         return self.test_steps.get(nodeid)
 
     @staticmethod
@@ -250,8 +250,8 @@ class XrayPlugin:
         if status is None:
             return
 
-        test_keys = self._get_test_keys_for(report.nodeid)
-        test_step = self._get_test_step_for(report.nodeid)
+        test_keys = self._get_test_keys_for_nodeid(report.nodeid)
+        test_step = self._get_test_step_for_nodeid(report.nodeid)
 
         if test_keys is None:
             return
