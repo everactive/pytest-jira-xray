@@ -263,7 +263,7 @@ class XrayPlugin:
                 status=status,
                 comment=report.longreprtext,
                 status_str_mapper=self.status_str_mapper,
-                test_step=test_step
+                test_step=test_step,
                 evidences=evidences
             )
             try:
