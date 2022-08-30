@@ -9,14 +9,6 @@ from pytest_xray import constant
 from pytest_xray.helper import TestCase as _TestCase, TestExecution as _TestExecution
 
 
-def formatted_comment(comment: str):
-    return f"{{noformat}}\n{comment}\n{{noformat}}"
-
-
-def formatted_comment(comment: str):
-    return f"{{noformat}}\n{comment}\n{{noformat}}"
-
-
 @pytest.fixture
 def date_time_now():
     return dt.datetime(2021, 4, 23, 16, 30, 2, 0, tzinfo=dt.timezone.utc)

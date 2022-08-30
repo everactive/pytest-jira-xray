@@ -136,6 +136,7 @@ def test_if_user_can_attache_evidences(xray_tests):
                  'filename': 'screenshot.jpeg'
              }
          ],
+         'steps': [],
          'status': 'PASS',
          'testKey': 'JIRA-1'}
     ]
