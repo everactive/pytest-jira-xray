@@ -64,7 +64,7 @@ def testcase_with_steps_2():
 def test_testcase_output_dictionary(testcase):
     assert testcase.as_dict() == {
         'testKey': 'JIRA-1',
-        'comment': formatted_comment('Test'),
+        'comment': 'Test',
         'status': 'PASS',
         'steps': []
     }
@@ -82,7 +82,7 @@ def test_test_execution_output_dictionary(testcase, date_time_now):
             },
             'tests': [
                 {
-                    'comment': formatted_comment('Test'),
+                    'comment': 'Test',
                     'status': 'PASS',
                     'testKey': 'JIRA-1',
                     'steps': []
@@ -104,7 +104,7 @@ def test_test_execution_output_dictionary_with_test_plan_id(testcase, date_time_
             },
             'tests': [
                 {
-                    'comment': formatted_comment('Test'),
+                    'comment': 'Test',
                     'status': 'PASS',
                     'testKey': 'JIRA-1',
                     'steps': []
@@ -127,7 +127,7 @@ def test_test_execution_output_dictionary_with_test_execution_id(testcase, date_
             },
             'tests': [
                 {
-                    'comment': formatted_comment('Test'),
+                    'comment': 'Test',
                     'status': 'PASS',
                     'testKey': 'JIRA-1',
                     'steps': []
@@ -163,7 +163,7 @@ def test_test_execution_full_model(testcase, date_time_now):
             },
             'tests': [
                 {
-                    'comment': formatted_comment('Test'),
+                    'comment': 'Test',
                     'status': 'PASS',
                     'testKey': 'JIRA-1',
                     'steps': []
@@ -199,7 +199,7 @@ def test_test_execution_environ_model(testcase, date_time_now):
             },
             'tests': [
                 {
-                    'comment': formatted_comment('Test'),
+                    'comment': 'Test',
                     'status': 'PASS',
                     'testKey': 'JIRA-1',
                     'steps': []
@@ -238,7 +238,7 @@ def test_test_execution_with_step(testcase_with_steps_0, date_time_now):
                     'comment': '',
                     'status': 'PASS',
                     'testKey': 'JIRA-2',
-                    'steps': [{'comment': formatted_comment('Test2 - Step 1'), 'status': 'PASS'}]
+                    'steps': [{'comment': 'Test2 - Step 1', 'status': 'PASS'}]
                 }
             ]
         }
@@ -281,9 +281,9 @@ def test_test_execution_with_multiple_steps(
                     'status': 'FAIL',
                     'testKey': 'JIRA-2',
                     'steps': [
-                        {'comment': formatted_comment('Test2 - Step 1'), 'status': 'PASS'},
-                        {'comment': formatted_comment('Test2 - Step 2'), 'status': 'FAIL'},
-                        {'comment': formatted_comment('Test2 - Step 3'), 'status': 'PASS'}
+                        {'comment': 'Test2 - Step 1', 'status': 'PASS'},
+                        {'comment': 'Test2 - Step 2', 'status': 'FAIL'},
+                        {'comment': 'Test2 - Step 3', 'status': 'PASS'}
                         ]
                 },
             ]
