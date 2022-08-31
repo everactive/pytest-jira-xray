@@ -171,7 +171,7 @@ class XrayPlugin:
             XRAY_ALLOW_DUPLICATE_IDS
         )
         logfile = self.config.getoption(XRAYPATH)
-        self.logfile: str = self._get_normalize_logfile(logfile) if logfile else None
+        self.logfile: Optional[str] = self._get_normalize_logfile(logfile) if logfile else None
         self.test_keys: Dict[str, List[str]] = {}  # store nodeid and TestId
         self.test_steps: Dict[str, int] = {}  # store nodeid and test step
         self.issue_id = None
@@ -256,13 +256,15 @@ class XrayPlugin:
         if test_keys is None:
             return
 
+        evidences = getattr(report, 'evidences', [])
         for test_key in test_keys:
             new_test_case = TestCase(
                 test_key=test_key,
                 status=status,
                 comment=report.longreprtext,
                 status_str_mapper=self.status_str_mapper,
-                test_step=test_step
+                test_step=test_step,
+                evidences=evidences
             )
             try:
                 test_case = self.test_execution.find_test_case(test_key)

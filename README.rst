@@ -74,7 +74,7 @@ Jira Xray configuration can be provided via Environment Variables:
 
 - SSL Client Certificate
 
-To disable SSL certificate verification, at the client side (no case-sensitive), default is True: 
+To disable SSL certificate verification, at the client side (no case-sensitive), default is True:
 
 .. code-block:: bash
 
@@ -226,7 +226,7 @@ even when duplicate ids are present. The JIRA-1 test result will be created acco
 the following rules:
 
 - The comment will be the comment from each of the test, separated by a horizontal divider.
-- The status will be the intuitive combination of the individual results: if ``test_my_process_1`` 
+- The status will be the intuitive combination of the individual results: if ``test_my_process_1``
   is a ``PASS`` but ``test_my_process_2`` is a ``FAIL``, ``JIRA-1`` will be marked as ``FAIL``.
 
 You can also mark multiple steps for a single Xray testcase using duplicate test ids and the ``step=``
@@ -248,6 +248,31 @@ In this case, the Pass/Fail result of the marked test method will become a PASS/
 for the associated Xray test step. Additionally, the comment for each test method will become a
 comment in the Xray test step. The overall Xray testcase status will be marked as FAIL if any test
 steps fail.
+
+Attach test evidences
++++++++++++++++++++++
+
+The following example adds the test evidences to the Xray report
+using a ``pytest_runtest_makereport`` hook.
+
+.. code-block:: python
+
+    # FILE: conftest.py
+    import pytest
+    from pytest_xray import evidence
+
+    @pytest.hookimpl(hookwrapper=True)
+    def pytest_runtest_makereport(item, call):
+        outcome = yield
+        report = outcome.get_result()
+        evidences = getattr(report, "evidences", [])
+        if report.when == "call":
+            xfail = hasattr(report, "wasxfail")
+            if (report.skipped and xfail) or (report.failed and not xfail):
+                data = open('screenshot.jpeg', 'rb').read()
+                evidences.append(evidence.jpeg(data=data, filename="screenshot.jpeg"))
+            report.evidences = evidences
+
 
 Hooks
 +++++
